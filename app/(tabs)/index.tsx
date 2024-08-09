@@ -4,6 +4,7 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import {white} from "colorette";
 
 export default function HomeScreen() {
   return (
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
-    paddingTop: 70
+    paddingTop: 70,
+      backgroundColor: 'white'
   }
 });

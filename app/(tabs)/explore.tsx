@@ -17,7 +17,7 @@ export default function TabTwoScreen() {
         <ThemedText type="title">Credit</ThemedText>
       </ThemedView>
       <ThemedText>Created By Yuki</ThemedText>
-      <ExternalLink style={{color: '#0000FF'}} href='https://github.com/Yuki56738'>ここをタップして私のGitHubを見る</ExternalLink>
+      <ExternalLink style={{color: '#0000FF'}} href='https://github.com/Yuki56738'>ここをタップして作者のGitHubを見る</ExternalLink>
     </ParallaxScrollView>
   );
 }
