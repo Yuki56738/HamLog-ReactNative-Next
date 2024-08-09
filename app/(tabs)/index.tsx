@@ -10,7 +10,6 @@ export default function HomeScreen() {
   return (
         <ScrollView style={styles.container}>
             <Text>Some text</Text>
-
         </ScrollView>
   );
 }
