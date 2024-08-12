@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Platform, ScrollView, Text, View} from 'react-native';
+import {Image, StyleSheet, Platform, ScrollView, Text, View, TextInput} from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -10,6 +10,9 @@ export default function HomeScreen() {
   return (
         <ScrollView style={styles.container}>
             <Text>Some text</Text>
+            <TextInput
+                placeholder='Type here'
+                ></TextInput>
         </ScrollView>
   );
 }
@@ -19,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     paddingTop: 70,
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      height: 40
   }
 });
