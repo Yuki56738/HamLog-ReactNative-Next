@@ -28,7 +28,8 @@ func main() {
 		qth := c.FormValue("qth")
 		name := c.FormValue("name")
 		remark := c.FormValue("remark")
-		handleDb(callsign, hisrs, myrs, qth, name, remark)
+		userid := c.FormValue("userid")
+		handleDb(callsign, hisrs, myrs, qth, name, remark, userid)
 		return c.String(200, "OK")
 	})
 	e.Logger.Fatal(e.Start(":1323"))
@@ -45,9 +46,10 @@ type hamlogs struct {
 	QTH      string
 	NAME     string
 	REMARK   string
+	USERID   string
 }
 
-func handleDb(callsign string, hisrs string, myrs string, qth string, name string, remark string) {
+func handleDb(callsign string, hisrs string, myrs string, qth string, name string, remark string, userid string) {
 	g := gen.NewGenerator(gen.Config{
 		OutPath:       "./query",
 		Mode:          gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface,
@@ -71,6 +73,7 @@ func handleDb(callsign string, hisrs string, myrs string, qth string, name strin
 		NAME:      name,
 		REMARK:    remark,
 		CreatedAt: time.Now().String(),
+		USERID:    userid,
 	}
 	err := db.AutoMigrate(&hamlogs{})
 	if err != nil {
