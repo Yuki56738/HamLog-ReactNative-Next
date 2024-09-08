@@ -22,7 +22,13 @@ func main() {
 		return c.String(200, "Pong!")
 	})
 	e.POST("add", func(c echo.Context) error {
-
+		callsign := c.FormValue("callsign")
+		hisrs := c.FormValue("hisrs")
+		myrs := c.FormValue("myrs")
+		qth := c.FormValue("qth")
+		name := c.FormValue("name")
+		remark := c.FormValue("remark")
+		handleDb(callsign, hisrs, myrs, qth, name, remark)
 		return c.String(200, "OK")
 	})
 	e.Logger.Fatal(e.Start(":1323"))
@@ -34,14 +40,14 @@ type hamlogs struct {
 	CreatedAt string
 	//UpdatedAt string `gorm:"type:datetime"`
 	CALLSIGN string
-	HISRS    int
-	MYRS     int
+	HISRS    string
+	MYRS     string
 	QTH      string
 	NAME     string
 	REMARK   string
 }
 
-func handleDb(callsign string, hisrs int, myrs int, qth string, name string, remark string) {
+func handleDb(callsign string, hisrs string, myrs string, qth string, name string, remark string) {
 	g := gen.NewGenerator(gen.Config{
 		OutPath:       "./query",
 		Mode:          gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface,
