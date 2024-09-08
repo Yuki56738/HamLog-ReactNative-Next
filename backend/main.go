@@ -1,20 +1,16 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
-	"github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
-	_ "github.com/labstack/echo/v4"
-	_ "github.com/labstack/echo/v4/middleware"
+	"gorm.io/driver/mysql"
 	"gorm.io/gen"
-)
-	- "gorm.io/gen"
+	"gorm.io/gorm"
 )
 
 func main() {
 	fmt.Println("running api server...")
-
+	handleDb()
 	e := echo.New()
 
 	e.GET("/", func(c echo.Context) error {
@@ -28,10 +24,26 @@ func main() {
 
 }
 
-func handleDb(){
+type hamlog struct {
+	ID        int    `gorm:"primaryKey"`
+	CreatedAt string `gorm:"type:datetime"`
+	UpdatedAt string `gorm:"type:datetime"`
+	CALLSIGN  string
+	HISRS     int
+	MYRS      int
+	QTH       string
+	NAME      string
+	REMARK    string
+}
+
+func handleDb() {
 	g := gen.NewGenerator(gen.Config{
 		OutPath: "./query",
-		Mode: gen.WithoutContext| gen.WithDefaultQuery |gen.WithQueryInterface,
-
+		Mode:    gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface,
 	})
+	var db *gorm.DB
+	db, _ = gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/hamlog?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{})
+	g.UseDB(db)
+	_ = db.Exec("CREATE DATABASE IF NOT EXISTS hamlog;")
+	g.Execute()
 }
