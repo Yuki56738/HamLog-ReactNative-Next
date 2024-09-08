@@ -41,9 +41,14 @@ func handleDb() {
 		OutPath: "./query",
 		Mode:    gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface,
 	})
-	var db *gorm.DB
-	db, _ = gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{})
-	g.UseDB(db)
-	_ = db.Exec("CREATE DATABASE IF NOT EXISTS hamlog;")
+	var dbToCreateDb *gorm.DB
+	dbToCreateDb, _ = gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{})
+	g.UseDB(dbToCreateDb)
+	_ = dbToCreateDb.Exec("CREATE DATABASE IF NOT EXISTS hamlog;")
 	g.Execute()
+	var db *gorm.DB
+	db, _ = gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/hamlog?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{})
+	g.UseDB(db)
+	g.Execute()
+
 }
