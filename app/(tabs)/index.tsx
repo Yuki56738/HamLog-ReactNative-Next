@@ -31,7 +31,7 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.callsignForm}>
                     <Text style={styles.label}>MyRS</Text>
-                    <TextInput style={styles.input} placeholder='MyRS'></TextInput>
+                    <TextInput style={styles.input} placeholder='MyRS' value={myRS} onChangeText={text => setMyRS(text)}></TextInput>
                 </View>
 
 
@@ -39,7 +39,7 @@ export default function HomeScreen() {
             <View style={styles.containerInner}>
                 <View style={styles.qthForm}>
                     <Text style={styles.label}>QTH</Text>
-                    <TextInput style={styles.input} placeholder='QTH'></TextInput>
+                    <TextInput style={styles.input} placeholder='QTH' value={qth} onChangeText={text => setQTH(text)}></TextInput>
                 </View>
                 <View style={styles.qthForm}>
                     <Text style={styles.label}>Name</Text>
@@ -68,7 +68,7 @@ export default function HomeScreen() {
 }
 function onPress() {
     alert('Press!');
-
+    var toSendJson = JSON.stringify({})
 
 }
 
