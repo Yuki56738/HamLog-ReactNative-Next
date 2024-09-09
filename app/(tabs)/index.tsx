@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet, Platform, ScrollView, Text, View, TextInput, Button, Pressable} from 'react-native';
 import {Header} from "@react-navigation/elements";
 
 export default function HomeScreen() {
+    const [callsign, setCallsign] = useState('');
+    const [hisRS, setHisRS] = useState('');
+    const [myRS, setMyRS] = useState('');
+    const [qth, setQTH] = useState('');
+    const [name, setName] = useState('');
+    const [remarks, setRemarks] = useState('');
     return (
         // <ScrollView style={styles.container}>
         //     <Text>Some text</Text>
@@ -17,11 +23,11 @@ export default function HomeScreen() {
             <View style={styles.containerInner}>
                 <View style={styles.callsignForm}>
                     <Text style={styles.label}>Callsign</Text>
-                    <TextInput style={styles.input} placeholder='Callsign'></TextInput>
+                    <TextInput style={styles.input} placeholder='Callsign' value={callsign} onChangeText={text => setCallsign(text)}></TextInput>
                 </View>
                 <View style={styles.callsignForm}>
                     <Text style={styles.label}>HisRS</Text>
-                    <TextInput style={styles.input} placeholder='HisRS'></TextInput>
+                    <TextInput style={styles.input} placeholder='HisRS' value={hisRS} onChangeText={text => setHisRS(text)}></TextInput>
                 </View>
                 <View style={styles.callsignForm}>
                     <Text style={styles.label}>MyRS</Text>
@@ -55,7 +61,7 @@ export default function HomeScreen() {
                 <Text style={styles.input}>Save</Text>
                 </Pressable>
             </View>
-
+            <Text>{callsign}</Text>
         </View>
 
     );
