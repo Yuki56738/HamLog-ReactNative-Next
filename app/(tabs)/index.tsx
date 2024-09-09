@@ -1,8 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, Platform, ScrollView, Text, View, TextInput, Button} from 'react-native';
+import {Image, StyleSheet, Platform, ScrollView, Text, View, TextInput, Button, Pressable} from 'react-native';
 import {Header} from "@react-navigation/elements";
-import {RectButton} from "react-native-gesture-handler";
-
 
 export default function HomeScreen() {
     return (
@@ -53,12 +51,19 @@ export default function HomeScreen() {
                 </View>
             </View>
             <View style={styles.containerInner}>
-                <Button color="#aaa" title='Save'></Button>
+                <Pressable style={styles.okPressable} onPress={onPress}>
+                <Text style={styles.input}>Save</Text>
+                </Pressable>
             </View>
 
         </View>
 
     );
+}
+function onPress() {
+    alert('Press!');
+
+
 }
 
 const styles = StyleSheet.create({
@@ -92,4 +97,11 @@ const styles = StyleSheet.create({
     remarksForm: {
         flex: 1
     },
+    okPressable: {
+        flex: 0.3,
+        backgroundColor: '#32faad',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+
 });
