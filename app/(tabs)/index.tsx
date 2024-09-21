@@ -1,7 +1,18 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Platform, ScrollView, Text, View, TextInput, Button, Pressable} from 'react-native';
 import {Header} from "@react-navigation/elements";
+import Storage from 'react-native-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const storage = new Storage({
+    size: 10000,
+    storageBackend: AsyncStorage,
+    defaultExpires: 1000*3600*24,
+    enableCache: true,
+    sync:{
+
+    }
+})
 export default function HomeScreen() {
     const [callsign, setCallsign] = useState('');
     const [hisRS, setHisRS] = useState('');
@@ -68,7 +79,6 @@ export default function HomeScreen() {
 }
 function onPress() {
     alert('Press!');
-    var toSendJson = JSON.stringify({})
 
 }
 
