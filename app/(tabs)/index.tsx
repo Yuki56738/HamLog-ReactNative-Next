@@ -43,7 +43,7 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.qthForm}>
                     <Text style={styles.label}>Name</Text>
-                    <TextInput style={styles.input} placeholder='Name'></TextInput>
+                    <TextInput style={styles.input} placeholder='Name' value={name} onChangeText={text => setName(text)}></TextInput>
                 </View>
                 {/*<View style={styles.qthForm}>*/}
                 {/*    <Text style={styles.label}>Remarks</Text>*/}
