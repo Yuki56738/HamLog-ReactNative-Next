@@ -7,11 +7,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const storage = new Storage({
     size: 10000,
     storageBackend: AsyncStorage,
-    defaultExpires: 1000*3600*24,
+    defaultExpires: null,
     enableCache: true,
-    sync:{
 
-    }
 })
 export default function HomeScreen() {
     const [callsign, setCallsign] = useState('');
