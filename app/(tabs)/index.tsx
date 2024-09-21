@@ -4,13 +4,10 @@ import {Header} from "@react-navigation/elements";
 import Storage from 'react-native-storage'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const storage = new Storage({
-    size: 10000,
-    storageBackend: AsyncStorage,
-    defaultExpires: null,
-    enableCache: true,
+const storage = async (hamlogdata, value)=>{
 
-})
+}
+
 export default function HomeScreen() {
     const [callsign, setCallsign] = useState('');
     const [hisRS, setHisRS] = useState('');
@@ -77,7 +74,21 @@ export default function HomeScreen() {
 }
 function onPress() {
     alert('Press!');
+    let data
 
+    // storage.load({
+    //     key: 'HAMLOGDATA'
+    // }).then(data: loaddata)=>{
+    //     loaddata1 = JSON.parse(loaddata);
+    //     data = loaddata1
+    //     console.log(data)
+    // }
+    // storage.save({
+    //     key: 'HAMLOGDATA',
+    //     data: JSON.stringify({
+    //
+    //     })
+    // })
 }
 
 const styles = StyleSheet.create({
